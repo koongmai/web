@@ -33,8 +33,8 @@ router.route('/').get(function(req,res){ // 클라이언트가 /경로, 루트�
    res.redirect('/source/jquery.html'); //서버는 클라이언트를 ('링크')로 리다이렉트함. 
    //브라우저를 자동으로 다른 url로 보내는 것것
 });
-router.route('/routetest').get(function(req, res){ //클라이언트가 /routetest 경로로 GET 요청을 보내면,
-   res.redirect('https://www.google.com'); //서버는 응답으로 "구글로 가세요"라는 지시를 보냄 → 브라우저는 자동으로 google.com으로 이동함.
+router.get('/routetest').get(function(req, res){ //클라이언트가 /routetest 경로로 GET 요청을 보내면,
+   res.redirect('http://www.google.com'); //서버는 응답으로 "구글로 가세요"라는 지시를 보냄 → 브라우저는 자동으로 google.com으로 이동함.
 });
 router.route('/rss').get(function(req, res){
    console.log("rss data requested");
@@ -63,7 +63,7 @@ app.all('*', function(req, res) {
 http.createServer(app).listen(app.get('port'), app.get('host'), ()=>{
    console.log('Express server running at ' + app.get('port')+app.get('host'));
 });
-
+//Express 앱을 HTTP서버로 실행시켜, 지정한 포트와 주소에서 클라이언트 요청을 받을 준비를 하고, 성공하면, 콘솔에 로그를 찍자. 
 const PORT = 8000;
 https.createServer(options,app).listen(PORT, app.get('host'), ()=>{
 console.log('Express HTTPS server running at https://' + app.get('host') + ':' + PORT);

@@ -152,13 +152,11 @@ $(document).ready(function() {
         $("#textbox").text("글자 입력 테스트");
         //txt, json
         // var req = $.ajax("data.json"); //data.txt
-
         //다른 방법
-        var req = $.ajax({
-            url: "data.txt",
-            dataType: "json"
+        var req = $.ajax({   //결과가 변수 req에 반영
+            url: "data.txt", //data.txt 파일에 
+            dataType: "json" //json형식으로 해석하라고 요청
         });
-
         req.done(function(data, status){
             //txt
             // var students = JSON.parse(data);
@@ -166,7 +164,6 @@ $(document).ready(function() {
             //  var str = "<br>"+students[i].name;
             //  $("#textbox").append(str);
             // }
-
             //json, 다른 방법
             for(var i=0; i<data.length; i++){
                 var str = "<br>"+data[i].name;
@@ -180,10 +177,7 @@ $(document).ready(function() {
             url: "data.txt",
             dataType: "json"
         });
-
-
-        req.done(function(data, status){    
-            
+        req.done(function(data, status){     
             var tb = $("<table/>");
             var row = $("<tr/>").append(
                 $("<th/>").text("이름"),
